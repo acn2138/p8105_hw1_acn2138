@@ -1,0 +1,36 @@
+---
+title: "github_document"
+output: html_document
+---
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+df_1 = tibble(
+              a = rnorm(10),
+              b =,
+              c = c("a", "Character", "vector", "of", "length", "ten", "in", "column", "lettered", "c"),
+              d = factor(c("low", "medium", "high")))
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+THe code chunk below creates a dataframe and generates a plot.
+```{r plot_example}
+
+library(tidyverse)
+
+plot_df= tibble(x = rnorm(500, mean = 2, sd = 4),
+                  y = 3 - 4.2 * x + rnorm(500))
+                  
+ggplot(plot_df,aes(x = x, y = y)) + geom_point()
+
+```
