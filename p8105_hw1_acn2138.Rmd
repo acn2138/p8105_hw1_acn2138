@@ -1,39 +1,48 @@
 ---
-title: "github_document"
-output: html_document
+title: "Amanda Nagle p8105 HW 1"
+output: github_document
 ---
  
 
 # Problem 1
 
-Here is  **code chunk** the creates a data frame:
+Here is  my solution to problem 1:
 
 ```{r}
 library(tidyverse)
 
+#creating the first data frame
+
 df_1 = tibble(
               a = rnorm(10),
-              b = ifelse(a>0, 1, 0),
+              b = a>0,
               c = c("a", "Character", "vector", "of", "length", "ten", "in", "column", "lettered", "c"),
               d = factor(c("low", "medium", "high",           "low","medium", "high", "low", "medium", "high", "low")))
-
+```
+Attempting to take the mean of all columns:
+```{r}
 summarise_all(df_1,mean)
 ```
 Means can be taken of columns a and b, but columns c and d are not numeric and the mean function cannot be applied to them.
 
 The following code attempts to force columns c and d into numeric form using as.numeric.
 
-```{r eval=false}
-mutate_at(df_1, c("c", "d"), as.numeric)
+```{r eval=FALSE}
+mutate_at(df_1, c("b", "c", "d"), as.numeric)
 ```
-
+Doing some math with the logical variable:
+```{r}
+df_num_b = mutate(df_1, b = as.numeric(b), e = a * b)
+df_factor_b = mutate(df_1, b = as.factor(b), e = a * b)
+df_factor_then_num_b = mutate(df_1, b = as.numeric(as.factor(b)), e = a * b)
+```
+When the logical variable b is numeric, the multiplication can be done.
+When the logical variable b is a factor, the data frame is created, but the new column is filled with missing values because multiplication is not meaningful with factors.
+When the logical variable is changed to a factor then numeric, the multiplication is possible, but potentially less meaningful because the values are coded 1,2 instead of 0,1 as they are coded when coerced to numeric from logical. 
 # problem 2
 
-I can take the mean of the sample, too!
 
-THe code chunk below creates a dataframe and generates a plot.
-```{r plot_example}
-
+```{r}
 data("penguins", package = "palmerpenguins")
-
 ```
+Penguins is a tibble with `r ncol(penguins)` variables and `r nrow(penguins)` rows. The variables are: `r names(penguins)`. Mean flipper length is `r mean(pull(penguins, as.numeric(flipper_length_mm)),na.rm=TRUE)`.
