@@ -15,20 +15,25 @@ df_1 = tibble(
               a = rnorm(10),
               b = ifelse(a>0, 1, 0),
               c = c("a", "Character", "vector", "of", "length", "ten", "in", "column", "lettered", "c"),
-              d = factor(c("low", "medium", "high",           "low","medium", "high",                             "low","medium", "high", "low")))
+              d = factor(c("low", "medium", "high",           "low","medium", "high", "low", "medium", "high", "low")))
+
+summarise_all(df_1,mean)
+```
+Means can be taken of columns a and b, but columns c and d are not numeric and the mean function cannot be applied to them.
+
+The following code attempts to force columns c and d into numeric form using as.numeric.
+
+```{r eval=false}
+mutate_at(df_1, c("c", "d"), as.numeric)
 ```
 
-# Section 2
+# problem 2
 
 I can take the mean of the sample, too!
 
 THe code chunk below creates a dataframe and generates a plot.
 ```{r plot_example}
 
-
-plot_df= tibble(x = rnorm(500, mean = 2, sd = 4),
-                  y = 3 - 4.2 * x + rnorm(500))
-                  
-ggplot(plot_df,aes(x = x, y = y)) + geom_point()
+data("penguins", package = "palmerpenguins")
 
 ```
