@@ -2,31 +2,29 @@
 title: "github_document"
 output: html_document
 ---
+ 
 
-I'm an R Markdown document! 
+# Problem 1
 
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
+Here is  **code chunk** the creates a data frame:
 
 ```{r}
+library(tidyverse)
+
 df_1 = tibble(
               a = rnorm(10),
-              b =,
+              b = ifelse(a>0, 1, 0),
               c = c("a", "Character", "vector", "of", "length", "ten", "in", "column", "lettered", "c"),
-              d = factor(c("low", "medium", "high")))
+              d = factor(c("low", "medium", "high",           "low","medium", "high",                             "low","medium", "high", "low")))
 ```
 
 # Section 2
 
 I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
 
 THe code chunk below creates a dataframe and generates a plot.
 ```{r plot_example}
 
-library(tidyverse)
 
 plot_df= tibble(x = rnorm(500, mean = 2, sd = 4),
                   y = 3 - 4.2 * x + rnorm(500))
