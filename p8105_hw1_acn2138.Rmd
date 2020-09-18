@@ -15,7 +15,7 @@ library(tidyverse)
 
 df_1 = tibble(
               a = rnorm(10),
-              b = a>0,
+              b = a > 0,
               c = c("a", "Character", "vector", "of", "length", "ten", "in", "column", "lettered", "c"),
               d = factor(c("low", "medium", "high",           "low","medium", "high", "low", "medium", "high", "low")))
 ```
@@ -40,7 +40,7 @@ When the logical variable b is numeric, the multiplication can be done.
 When the logical variable b is a factor, the data frame is created, but the new column is filled with missing values because multiplication is not meaningful with factors.
 When the logical variable is changed to a factor then numeric, the multiplication is possible, but potentially less meaningful because the values are coded 1,2 instead of 0,1 as they are coded when coerced to numeric from logical. 
 
-# problem 2
+# Problem 2
 
 
 ```{r}
@@ -50,9 +50,9 @@ Penguins is a data frame with `r ncol(penguins)` variables and `r nrow(penguins)
 
 Scatter plot of Bill Length by Flipper Length, grouped by Species
 ```{r}
-penguins_plot = ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, color= species)) + geom_point()
+penguins_plot = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
 penguins_plot
   
-ggsave(file= "penguins_plot.png")
+ggsave(file = "penguins_plot.png")
 ```
