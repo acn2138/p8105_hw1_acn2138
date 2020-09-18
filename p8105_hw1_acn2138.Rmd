@@ -46,8 +46,13 @@ When the logical variable is changed to a factor then numeric, the multiplicatio
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
-Penguins is a tibble with `r ncol(penguins)` variables and `r nrow(penguins)` rows. The variables are: `r names(penguins)`. Mean flipper length is `r mean(pull(penguins, as.numeric(flipper_length_mm)),na.rm=TRUE)`.
+Penguins is a data frame with `r ncol(penguins)` variables and `r nrow(penguins)` rows. The variables are: `r names(penguins)`. Mean flipper length is `r mean(pull(penguins, as.numeric(flipper_length_mm)),na.rm=TRUE)`.
 
+Scatter plot of Bill Length by Flipper Length, grouped by Species
 ```{r}
-ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, color= species)) + geom_point()
+penguins_plot = ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, color= species)) + geom_point()
+
+penguins_plot
+  
+ggsave(file= "penguins_plot.png")
 ```
