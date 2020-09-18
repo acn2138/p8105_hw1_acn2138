@@ -2,6 +2,7 @@
 title: "Amanda Nagle p8105 HW 1"
 author: "Amanda Nagle"
 output: github_document
+
 ---
  
 
@@ -53,7 +54,7 @@ Scatter plot of Bill Length by Flipper Length, grouped by Species
 ```{r}
 penguins_plot = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
-print(penguins_plot)
+plot(penguins_plot)
   
 ggsave(file = "penguins_plot.png")
 ```
